@@ -1,0 +1,28 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Skill</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <tr *ngFor="let skill of user.skills">
+                <td>{{skill}}</td>
+              </tr>
+            </td>
+            <td><button type="button" (click)=editButtonClick(user.id)>Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

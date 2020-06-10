@@ -1,0 +1,36 @@
+<div class="card my-5">
+    <div class="card-body">
+        <form [formGroup]="employeeForm">
+            <div class="form-group">
+                <label>Full Name: </label>
+                <input formControlName="fullName" class="form-control">
+            </div>
+            <div formArrayName="skills" *ngFor="let control of employeeForm.get('skills')['controls'] ; let i=index">
+                <div [formGroupName]="i">
+                    <table>
+                        <tr>
+                            <td>
+                                <label>Skill: </label>
+                            </td>
+                            <td> <input formControlName="skillName" [id]="'skillname'+i" class="form-control ng-untouched ng-pristine ng-invalid">
+                            </td>
+                            <td> <label>Experience: </label>
+                            </td>
+                            <td> <input formControlName="experience" [id]="'experience'+i" class="form-control ng-untouched ng-pristine ng-invalid">
+                            </td>
+                            <td>
+                                <div *ngIf="employeeForm.get('skills').value.length>1">
+                                    <button type="button" class="btn btn-danger" (click)="removeSkillButtonClick(i)" class="form-control ng-untouched ng-pristine ng-invalid">Remove
+                                        skill
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <button type="button" (click)="addSkillButtonClick()">Add Skills</button>
+        </form>
+        <button class="button buttonsave" (click)="submit()">Submit</button>
+    </div>
+</div>
